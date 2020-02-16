@@ -1,5 +1,6 @@
 package it.reply.iriscube.unito.datasource.api
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 
 /**
@@ -21,6 +22,8 @@ data class ListUsersApiResponse(
 data class Person(
     @JsonProperty("id")
     val id: Long,
+    @JsonProperty("email")
+    val email:String,
     @JsonProperty("first_name")
     val name: String,
     @JsonProperty("last_name")
