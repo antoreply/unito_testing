@@ -11,12 +11,12 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.CompanyActivity">
-        </activity>
-        <activity android:name=".activity.ProfileActivity">
-        </activity>
-        <activity android:name=".activity.MainSectionActivity">
-        </activity>
+
+        <activity android:name=".activity.CompanyActivity"/>
+        <activity android:name=".activity.ProfileActivity"/>
+        <activity android:name=".activity.MainSectionActivity"/>
+        <activity android:name=".activity.WelcomeActivity"/>
+
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WelcomeActivity"/>
+
     </application>
 
 </manifest>
