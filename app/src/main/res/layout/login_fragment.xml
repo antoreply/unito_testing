@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -19,8 +19,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone">
+            app:layout_constraintTop_toTopOf="parent">
 
         <TextView
                 android:layout_width="wrap_content"
@@ -59,7 +58,8 @@
             app:layout_constraintBottom_toTopOf="@id/userNameTextView"
             app:layout_constraintEnd_toEndOf="@id/userNameTextView"
             app:layout_constraintStart_toStartOf="@id/userNameTextView"
-            app:layout_constraintTop_toBottomOf="@id/companyIcon" />
+            app:layout_constraintTop_toBottomOf="@id/companyIcon"
+    />
 
     <EditText
             android:id="@+id/userNameTextView"
@@ -110,7 +110,8 @@
             app:layout_constraintBottom_toTopOf="@id/passwordTextView"
             app:layout_constraintEnd_toEndOf="@id/passwordTextView"
             app:layout_constraintStart_toStartOf="@id/passwordTextView"
-            app:layout_constraintTop_toBottomOf="@id/userNameErrorView" />
+            app:layout_constraintTop_toBottomOf="@id/userNameErrorView"
+    />
 
     <EditText
             android:id="@+id/passwordTextView"
@@ -201,4 +202,4 @@
             app:layout_constraintStart_toEndOf="@id/noAccountLabel"/>
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
