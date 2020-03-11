@@ -21,6 +21,8 @@ data class ListUsersApiResponse(
 data class Person(
     @JsonProperty("id")
     val id: Long,
+    @JsonProperty("email")
+    val email: String,
     @JsonProperty("first_name")
     val name: String,
     @JsonProperty("last_name")
