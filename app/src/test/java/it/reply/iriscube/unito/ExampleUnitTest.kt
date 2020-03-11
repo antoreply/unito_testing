@@ -1,7 +1,6 @@
 package it.reply.iriscube.unito
 
 import org.junit.Test
-
 import org.junit.Assert.*
 
 /**
