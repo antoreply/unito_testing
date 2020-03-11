@@ -2,7 +2,7 @@ package it.reply.iriscube.unito.app.activity
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import it.reply.iriscube.unito.datasource.api.Person
 
 /**

@@ -1,7 +1,8 @@
 package it.reply.iriscube.unito.app.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+
 import it.reply.iriscube.unito.R
 import it.reply.iriscube.unito.app.fragment.CompanyFragment
 

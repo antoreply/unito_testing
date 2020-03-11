@@ -1,17 +1,18 @@
 package it.reply.iriscube.unito.app.activity
 
 import android.content.ComponentName
-import android.support.test.InstrumentationRegistry
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.contrib.RecyclerViewActions
-import android.support.test.espresso.intent.Intents
-import android.support.test.espresso.intent.Intents.intended
-import android.support.test.espresso.intent.matcher.IntentMatchers
-import android.support.test.espresso.matcher.ViewMatchers.withId
-import android.support.test.filters.LargeTest
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.intent.Intents
+import androidx.test.espresso.intent.Intents.intended
+import androidx.test.espresso.intent.matcher.IntentMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.LargeTest
+import androidx.test.rule.ActivityTestRule
 import it.reply.iriscube.unito.MockWebServerTestRule
 import it.reply.iriscube.unito.R
 import it.reply.iriscube.unito.app.activity.PersonDetailActivity.Companion.PERSON_ID_EXTRA
@@ -93,7 +94,7 @@ class AddressBookActivityTest {
                 )
         )
         // Starting the desired activity.
-        addressBookActivityRule.launchActivity(AddressBookActivity.newIntent(InstrumentationRegistry.getTargetContext()))
+        addressBookActivityRule.launchActivity(AddressBookActivity.newIntent(ApplicationProvider.getApplicationContext()))
         // Checking that the information displayed by the summary are correct.
         onView(withId(R.id.recyclerView)).check(RecyclerViewItemCountAssertion(3))
     }
@@ -104,7 +105,7 @@ class AddressBookActivityTest {
             MockResponse().setResponseCode(500)
         )
         // Starting the desired activity.
-        addressBookActivityRule.launchActivity(AddressBookActivity.newIntent(InstrumentationRegistry.getTargetContext()))
+        addressBookActivityRule.launchActivity(AddressBookActivity.newIntent(ApplicationProvider.getApplicationContext()))
         // Checking that the information displayed by the summary are as expected.
         onView(withId(R.id.recyclerView)).check(RecyclerViewItemCountAssertion(0))
     }
@@ -149,8 +150,10 @@ class AddressBookActivityTest {
         )
         // Starting the address book activity.
         addressBookActivityRule.launchActivity(
-            AddressBookActivity.newIntent(InstrumentationRegistry.getTargetContext())
+            AddressBookActivity.newIntent(ApplicationProvider.getApplicationContext())
         )
+
+
         // Selecting a user from the list and verifying that the right intent is started.
         onView(withId(R.id.recyclerView))
             .perform(
@@ -161,7 +164,7 @@ class AddressBookActivityTest {
             allOf(
                 IntentMatchers.hasComponent(
                     ComponentName.createRelative(
-                        InstrumentationRegistry.getTargetContext(),
+                        ApplicationProvider.getApplicationContext() as Context,
                         PersonDetailActivity::class.java.name
                     )
                 ),
