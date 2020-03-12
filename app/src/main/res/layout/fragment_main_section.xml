@@ -8,7 +8,7 @@
     android:background="@android:color/white"
     tools:context=".fragment.MainSectionFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/profileContainer"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -36,7 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/companyIcon">
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/profileIcn"
@@ -62,7 +62,7 @@
             app:layout_constraintStart_toStartOf="@id/profileContainer"
             app:layout_constraintTop_toBottomOf="@id/profileIcn"/>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/companyContainer"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -76,7 +76,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profileContainer">
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/companyIcn"
@@ -102,7 +102,7 @@
             app:layout_constraintStart_toStartOf="@id/profileContainer"
             app:layout_constraintTop_toBottomOf="@id/companyIcn"/>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/addressbookContainer"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -116,7 +116,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/companyContainer">
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/addressbookIcn"
@@ -148,6 +148,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/addressbookContainer"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

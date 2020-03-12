@@ -1,24 +1,16 @@
 package it.reply.iriscube.unito
 
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.action.ViewActions.*
-import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.intent.Intents.intended
-import android.support.test.espresso.intent.matcher.IntentMatchers.hasData
-import android.support.test.espresso.intent.matcher.IntentMatchers.hasExtraWithKey
-import android.support.test.espresso.intent.rule.IntentsTestRule
-import android.support.test.espresso.matcher.ViewMatchers.*
-import android.support.test.rule.ActivityTestRule
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.intent.Intents.intended
+import androidx.test.espresso.intent.matcher.IntentMatchers.hasExtraWithKey
+import androidx.test.espresso.intent.rule.IntentsTestRule
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import it.reply.iriscube.unito.activity.LoginActivity
-import it.reply.iriscube.unito.activity.WelcomeActivity
 import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.not
 import org.junit.Rule
 import org.junit.Test
 
-/**
- * Created by Reply.
- */
 
 class LoginActivityTest {
 
@@ -35,3 +27,4 @@ class LoginActivityTest {
         ))
     }
 }
+

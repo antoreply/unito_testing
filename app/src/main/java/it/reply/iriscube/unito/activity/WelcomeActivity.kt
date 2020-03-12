@@ -1,11 +1,10 @@
 package it.reply.iriscube.unito.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import it.reply.iriscube.unito.R
 import it.reply.iriscube.unito.activity.LoginActivity.Companion.USERNAME
-import it.reply.iriscube.unito.fragment.LoginFragment
 import it.reply.iriscube.unito.fragment.WelcomeFragment
 
 class WelcomeActivity : AppCompatActivity(), WelcomeFragment.OnWelcomeFragmentListener {
