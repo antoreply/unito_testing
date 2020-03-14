@@ -1,4 +1,4 @@
-package it.reply.iriscube.unito.assertion
+package it.reply.iriscube.unito
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

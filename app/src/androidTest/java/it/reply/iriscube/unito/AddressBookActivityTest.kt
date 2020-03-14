@@ -1,4 +1,4 @@
-package it.reply.iriscube.unito.app.activity
+package it.reply.iriscube.unito
 
 import android.content.ComponentName
 import android.content.Context
@@ -13,11 +13,10 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
-import it.reply.iriscube.unito.MockWebServerTestRule
-import it.reply.iriscube.unito.R
+import it.reply.iriscube.unito.app.activity.AddressBookActivity
+import it.reply.iriscube.unito.app.activity.PersonDetailActivity
 import it.reply.iriscube.unito.app.activity.PersonDetailActivity.Companion.PERSON_ID_EXTRA
 import it.reply.iriscube.unito.app.adapter.PeopleAdapter
-import it.reply.iriscube.unito.assertion.RecyclerViewItemCountAssertion
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.hamcrest.Matchers.allOf
@@ -72,18 +71,21 @@ class AddressBookActivityTest {
                         "data": [
                             {
                                 "id": 1,
+                                "email": "george.bluth@gmail.com",
                                 "first_name": "George",
                                 "last_name": "Bluth",
                                 "avatar": ""
                             },
                             {
                                 "id": 2,
+                                "email": "janet.weaver@yahoo.com",
                                 "first_name": "Janet",
                                 "last_name": "Weaver",
                                 "avatar": ""
                             },
                             {
                                 "id": 3,
+                                "email": "emma.wong@gmail.com",
                                 "first_name": "Emma",
                                 "last_name": "Wong",
                                 "avatar": ""
@@ -94,9 +96,17 @@ class AddressBookActivityTest {
                 )
         )
         // Starting the desired activity.
-        addressBookActivityRule.launchActivity(AddressBookActivity.newIntent(ApplicationProvider.getApplicationContext()))
+        addressBookActivityRule.launchActivity(
+            AddressBookActivity.newIntent(
+                ApplicationProvider.getApplicationContext()
+            )
+        )
         // Checking that the information displayed by the summary are correct.
-        onView(withId(R.id.recyclerView)).check(RecyclerViewItemCountAssertion(3))
+        onView(withId(R.id.recyclerView)).check(
+            RecyclerViewItemCountAssertion(
+                3
+            )
+        )
     }
 
     @Test
@@ -105,9 +115,17 @@ class AddressBookActivityTest {
             MockResponse().setResponseCode(500)
         )
         // Starting the desired activity.
-        addressBookActivityRule.launchActivity(AddressBookActivity.newIntent(ApplicationProvider.getApplicationContext()))
+        addressBookActivityRule.launchActivity(
+            AddressBookActivity.newIntent(
+                ApplicationProvider.getApplicationContext()
+            )
+        )
         // Checking that the information displayed by the summary are as expected.
-        onView(withId(R.id.recyclerView)).check(RecyclerViewItemCountAssertion(0))
+        onView(withId(R.id.recyclerView)).check(
+            RecyclerViewItemCountAssertion(
+                0
+            )
+        )
     }
 
     @Test
@@ -126,18 +144,21 @@ class AddressBookActivityTest {
                         "data": [
                             {
                                 "id": 1,
+                                "email": "george.bluth@gmail.com",
                                 "first_name": "George",
                                 "last_name": "Bluth",
                                 "avatar": ""
                             },
                             {
                                 "id": 2,
+                                "email": "janet.weaver@yahoo.com",
                                 "first_name": "Janet",
                                 "last_name": "Weaver",
                                 "avatar": ""
                             },
                             {
                                 "id": 3,
+                                "email": "emma.wong@gmail.com",
                                 "first_name": "Emma",
                                 "last_name": "Wong",
                                 "avatar": ""
@@ -146,11 +167,13 @@ class AddressBookActivityTest {
                     }
                 """.trimIndent()
                 )
-                .setBodyDelay(2, TimeUnit.SECONDS)
+                // .setBodyDelay(2, TimeUnit.SECONDS) --> test fails if you insert a delay on response
         )
         // Starting the address book activity.
         addressBookActivityRule.launchActivity(
-            AddressBookActivity.newIntent(ApplicationProvider.getApplicationContext())
+            AddressBookActivity.newIntent(
+                ApplicationProvider.getApplicationContext()
+            )
         )
 
 
