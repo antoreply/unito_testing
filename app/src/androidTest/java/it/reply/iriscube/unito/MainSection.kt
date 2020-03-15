@@ -53,67 +53,20 @@ class MainSection {
         )
     }
 
-    private fun doLogin(){
-        // Type text and then press the button.
-        device.findObject(By.res(BASIC_SAMPLE_PACKAGE, "userNameTextView")).setText("Test")
-        device.findObject(By.res(BASIC_SAMPLE_PACKAGE, "passwordTextView")).setText("123456789")
-        //device.findObject(By.res(BASIC_SAMPLE_PACKAGE, "loginButton")).click();
-
-        val entraButton: UiObject = device.findObject(
-            UiSelector().text("ENTRA").className("android.widget.Button")
-        )
-
-        // Simulate a user-click on the OK button, if found.
-        if (entraButton.exists() && entraButton.isEnabled) {
-            entraButton.click()
-        }
-    }
-
-    private fun gotoUserList() {
-        device.findObject(By.res(BASIC_SAMPLE_PACKAGE, "nextIcn")).click()
-    }
+    // TODO goto MainSection
 
     @Test
     fun checkProfileLabel(){
-        doLogin()
-        gotoUserList()
-
-        val textview = device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "profileTxt")),500)
-        ViewMatchers.assertThat(
-            textview.getText(),
-            CoreMatchers.equalTo("Il mio profilo")
-        )
-
+        // TODO Verify the first textview content
     }
 
     @Test
     fun checkCompanyLabel() {
-        doLogin()
-        gotoUserList()
-
-        val textview =
-            device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "companyTxt")), 500)
-        ViewMatchers.assertThat(
-            textview.getText(),
-            CoreMatchers.equalTo("La mia azienda")
-        )
-
+        // TODO Verify the second textview content
     }
 
     @Test
     fun checkAddressbookLabel() {
-        doLogin()
-        gotoUserList()
-
-        val appViews1 = UiScrollable(UiSelector().scrollable(true))
-        appViews1.scrollForward();
-
-        val textview = device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "addressbookTxt")), 500)
-
-        ViewMatchers.assertThat(
-            textview.getText(),
-            CoreMatchers.equalTo("La mia rubrica")
-        )
-
+        // TODO Verify the third textview content
     }
 }
