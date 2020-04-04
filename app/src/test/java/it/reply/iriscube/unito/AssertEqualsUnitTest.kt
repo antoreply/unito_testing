@@ -7,8 +7,8 @@ class AssertEqualsUnitTest {
 
     @Test
     fun myStringEqualsTest() {
-        val coffee = CoffeeType(5, "Americano", 1.6f)
-        val expectedName = "Americano"
+        val coffee = CoffeeType.getMenu()[4]
+        val expectedName = coffee.getExpensiveCoffeeType()
 
         // assertEquals(expectedName, coffee.getExpensiveCoffeeType())
 

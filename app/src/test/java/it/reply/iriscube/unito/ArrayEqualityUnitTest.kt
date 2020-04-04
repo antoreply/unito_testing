@@ -1,6 +1,6 @@
 package it.reply.iriscube.unito
 
-import org.junit.Assert.assertArrayEquals
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
@@ -21,12 +21,17 @@ class ArrayEqualityUnitTest {
     }
 
     @Test
-    fun compareCoffeeTypes() {
+    fun compareObjectsContents() {
 
-        // val testOutput = CoffeeType.getMenu().toTypedArray()
-        // assertArrayEquals(expectedCoffee, testOutput)
+        val testOutput = CoffeeType.getMenu().toTypedArray()
+        assertArrayEquals(expectedCoffee, testOutput)
+    }
 
-        // TODO check if are equals the elements in expectedCoffee object and elements in the CoffeeType menu (convert List of objects to array of objects)
+    @Test
+    fun compareObjectReferences() {
+
+        val testOutput = CoffeeType.getMenu().toTypedArray()
+        assertNotSame(expectedCoffee, testOutput)
     }
 
 }
