@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Android Testing</string>
-    <string name="coffee_price">Coffee: $%.1f</string>
-    <string name="total_price">Total price: $%.1f</string>
+    <string name="app_name">Coffee Order</string>
+    <string name="coffee_price">Coffee: %1$s %2$.2f euro</string>
+    <string name="total_price">Total price: %.2f euro</string>
     <string name="increment_label">+</string>
     <string name="decrement_label">-</string>
     <string name="default_coffee_count">0</string>

@@ -1,6 +1,6 @@
 package it.reply.iriscube.unito
 
-data class CoffeeType(var id: Int, var name: String, var price: Float) {
+data class CoffeeType(var id: Int, var name: String, var price: Float = 1.0f) {
 
     companion object {
         fun getMenu(): List<CoffeeType> {
@@ -16,7 +16,7 @@ data class CoffeeType(var id: Int, var name: String, var price: Float) {
 
     fun getExpensiveCoffeeType(): String {
         /**
-         * logic to get Highest paid employee
+         * logic to get the expensive coffee type
          */
         return "Americano"
     }

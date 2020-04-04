@@ -7,7 +7,10 @@ class AssertNotNullUnitTest {
 
     @Test
     fun notNullTest() {
-        assertNotNull(getPropValue(1.4f))
+        // assertNotNull(getPropValue(1.4f))
+
+        // TODO check if exist a not null coffeeType with price 1.1f and is
+
     }
 
     private fun getPropValue(key: Float): String? {

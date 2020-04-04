@@ -21,13 +21,12 @@ class ArrayEqualityUnitTest {
     }
 
     @Test
-    fun compareEmployees() {
-        /**
-         * convert List of objects to array of objects
-         */
+    fun compareCoffeeTypes() {
 
-        val testOutput = CoffeeType.getMenu().toTypedArray()
-        assertArrayEquals(expectedCoffee, testOutput)
+        // val testOutput = CoffeeType.getMenu().toTypedArray()
+        // assertArrayEquals(expectedCoffee, testOutput)
+
+        // TODO check if are equals the elements in expectedCoffee object and elements in the CoffeeType menu (convert List of objects to array of objects)
     }
 
 }

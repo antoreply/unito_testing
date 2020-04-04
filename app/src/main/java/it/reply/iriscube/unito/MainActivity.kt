@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private val COFFEE_COUNT = "coffee_count"
-    val DEFAULT_COFFEE_PRICE = CoffeeType.getMenu()[0].price
+    val espressoDoppio = CoffeeType(id = 6, name = "EspressoDoppio", price = 1.7f)
 
     private var mOrder: CoffeeOrder? = null
 
@@ -17,24 +17,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        coffeePrice.text = String.format(getString(R.string.coffee_price), DEFAULT_COFFEE_PRICE)
+        coffeePrice.text = String.format(getString(R.string.coffee_price), espressoDoppio.name, espressoDoppio.price)
         totalPrice.text = String.format(getString(R.string.total_price), 0.0f)
 
         coffeeIncrement.setOnClickListener(this)
         coffeeDecrement.setOnClickListener(this)
 
-        mOrder = CoffeeOrder(DEFAULT_COFFEE_PRICE)
+        mOrder = CoffeeOrder(price = espressoDoppio.price)
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.coffeeIncrement -> {
-                mOrder!!.incrementCoffeeCount()
+                mOrder?.incrementCoffeeCount()
                 updateCoffeeCount()
                 updateTotalPrice()
             }
             R.id.coffeeDecrement -> {
-                mOrder!!.decrementCoffeeCount()
+                mOrder?.decrementCoffeeCount()
                 updateCoffeeCount()
                 updateTotalPrice()
             }
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun updateTotalPrice() {
-        totalPrice.text = String.format(getString(R.string.total_price), mOrder?.getTotalPrice())
+        totalPrice.text = String.format(getString(R.string.total_price), mOrder?.totalPrice)
     }
 
 

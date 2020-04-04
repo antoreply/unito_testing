@@ -1,43 +1,32 @@
 package it.reply.iriscube.unito
 
-class CoffeeOrder {
-    var mCoffeePrice: Float = CoffeeType.getMenu()[0].price
-    var mCoffeeCount: Int = 0
-    var mTotalPrice: Float = 0f
+data class CoffeeOrder(var price: Float = 1.0f, var count: Int = 0, var totalPrice: Float = 0f) {
 
-    constructor(coffeePrice: Float){
-        mCoffeePrice = coffeePrice
+    fun getCoffeeCount(): Int{
+        return count
     }
 
     fun setCoffeeCount(count: Int){
         if(count >= 0)
-            mCoffeeCount = count
+            this.count = count
 
         calculateTotalPrice()
     }
 
-    fun getCoffeeCount(): Int{
-        return mCoffeeCount
-    }
-
     fun incrementCoffeeCount(){
-        mCoffeeCount++
+        count++
         calculateTotalPrice()
     }
 
     fun decrementCoffeeCount(){
-        if(mCoffeeCount > 0) {
-            mCoffeeCount--
+        if(count > 0) {
+            count--
             calculateTotalPrice()
         }
     }
 
     fun calculateTotalPrice(){
-        mTotalPrice = mCoffeePrice * mCoffeeCount
-    }
-
-    fun getTotalPrice(): Float{
-        return mTotalPrice
+        totalPrice = price * count
     }
 
 }
