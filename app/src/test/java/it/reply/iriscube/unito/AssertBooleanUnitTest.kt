@@ -6,19 +6,19 @@ import org.junit.Test
 class AssertBooleanUnitTest {
 
     @Test
-    fun evenNumberTest() {
+    fun evenPriceTest() {
         val abut = AssertBooleanUnitTest()
-        assertFalse(abut.isEvenNumber(3))
+        assertFalse(abut.isPriceEvenNumber(3f))
     }
 
     @Test
     fun oddNumberTest() {
-        // TODO controllare se un numero è pari, usando l'assertion inversa all'esempio precedente
+        // TODO check if the price is even or odd number, using the opposite of the previous example
     }
 
-    private fun isEvenNumber(number: Int): Boolean {
+    private fun isPriceEvenNumber(number: Float): Boolean {
         var result = false
-        if (number % 2 == 0) {
+        if (number % 2f == 0f) {
             result = true
         }
         return result

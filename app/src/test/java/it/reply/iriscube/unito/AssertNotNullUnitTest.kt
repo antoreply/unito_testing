@@ -7,14 +7,14 @@ class AssertNotNullUnitTest {
 
     @Test
     fun notNullTest() {
-        assertNotNull(getPropValue("key1"))
+        assertNotNull(getPropValue(1.4f))
     }
 
-    private fun getPropValue(key: String): String? {
+    private fun getPropValue(key: Float): String? {
         val appProps = mapOf(
-            "key1" to "value 1",
-            "key2" to "value 2",
-            "key3" to "value 3"
+            1f to "Espresso",
+            1.4f to "Cappuccino",
+            1.1f to "Decaffeinato"
         )
         return appProps[key]
     }

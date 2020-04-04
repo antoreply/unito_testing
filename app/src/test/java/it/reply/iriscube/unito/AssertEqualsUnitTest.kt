@@ -7,14 +7,9 @@ class AssertEqualsUnitTest {
 
     @Test
     fun myStringEqualsTest() {
-        val employee = Employee(1, "Yoda", 15000)
-        val expectedName = "Yoda"
+        val coffee = CoffeeType(5, "Americano", 1.6f)
+        val expectedName = "Americano"
 
-        assertEquals(expectedName, employee.getEmpNameWithHighestSalary())
-    }
-
-    @Test
-    fun myObjectEqualsTest() {
-        // TODO implementare i metodi necessari per poter fare la comparazione tra oggetti (expected == actual), sono data classes...
+        assertEquals(expectedName, coffee.getExpensiveCoffeeType())
     }
 }
