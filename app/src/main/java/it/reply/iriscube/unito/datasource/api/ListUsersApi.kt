@@ -16,7 +16,9 @@ data class ListUsersApiResponse(
     @JsonProperty("total_pages")
     val totalPages: Long,
     @JsonProperty("data")
-    val data: List<Person>
+    val data: List<Person>,
+    @JsonProperty("ad")
+    val ad:Ad
 )
 
 data class Person(
@@ -30,4 +32,13 @@ data class Person(
     val lastName: String,
     @JsonProperty("avatar")
     val avatar: String
+)
+
+data class Ad(
+    @JsonProperty("company")
+    val company:String,
+    @JsonProperty("url")
+    val url:String,
+    @JsonProperty("text")
+    val text:String
 )
