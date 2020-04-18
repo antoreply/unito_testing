@@ -4,7 +4,7 @@ package it.reply.iriscube.unito.app.activity.mock
  * Created by Reply on 2020-04-18.
  */
 
-object MockResponse {
+object AddressBookMockResponses {
 
     val getAddressBookResponse = """
                     {
