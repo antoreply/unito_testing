@@ -13,6 +13,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.reply.iriscube.unito.R
 import it.reply.iriscube.unito.app.adapter.PeopleAdapter
+import it.reply.iriscube.unito.app.utils.EspressoIdlingRsource
 import it.reply.iriscube.unito.datasource.api.APIClient
 import it.reply.iriscube.unito.datasource.api.APIInterface
 import it.reply.iriscube.unito.datasource.api.Person
@@ -97,9 +98,11 @@ class AddressBookActivity : AppCompatActivity(), PeopleAdapter.OnPersonSelectedL
 
     private fun onDataLoadingStarted() {
         progressBar.visibility = View.VISIBLE
+        EspressoIdlingRsource.increment()
     }
 
     private fun onDataLoaded() {
         progressBar.visibility = View.GONE
+        EspressoIdlingRsource.decrement()
     }
 }

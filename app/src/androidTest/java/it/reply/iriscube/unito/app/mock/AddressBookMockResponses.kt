@@ -34,7 +34,13 @@ object AddressBookMockResponses {
                                 "last_name": "Wong",
                                 "avatar": ""
                             }
-                        ]
+                        ],
+                        "ad": {
+                            "company": "ssksks",
+                            "url": "slsdkd",
+                            "text": "ddfkf"
+
+                        }
                     }
                 """.trimIndent()
 
