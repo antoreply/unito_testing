@@ -71,4 +71,11 @@ class LoginActivityTest {
 
     }
 
+   @Test
+   fun verifyLoginCredentialRetain(){
+
+       // TODO check that by pressing logout the credentials are kept
+
+   }
+
 }
