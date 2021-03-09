@@ -60,22 +60,55 @@ class LoginActivityTest {
     @Test
     fun verifyEmailDetail(){
 
-        // TODO navigate to the detail view, inside "il mio profilo", and check the shown mail is "m.rossi@reply.it"
+        gotoDetails()
+
+        onView(withId(R.id.profileEmailTxt))
+            .check(matches(withText("m.rossi@reply.it")))
 
     }
 
     @Test
     fun verifyBirthPlace(){
 
-        // TODO navigate to the detail view, inside "il mio profilo", and check the birth place is "Torino"
+        gotoDetails()
+
+        onView((withId(R.id.profileBornCityTxt)))
+            .check(matches(withText("Torino")))
 
     }
 
    @Test
    fun verifyLoginCredentialRetain(){
 
-       // TODO check that by pressing logout the credentials are kept
+       val username = "myPublicUsername"
+
+       onView(withId(R.id.userNameTextView))
+           .perform(typeText(username), closeSoftKeyboard())
+       onView((withId(R.id.passwordTextView)))
+           .perform(typeText("test"), closeSoftKeyboard())
+
+       onView(withId(R.id.loginButton))
+           .perform(click())
+       onView(withId(R.id.logoutIcn))
+           .perform(click())
+
+       onView(withId(R.id.userNameTextView))
+           .check(matches(withText(username)))
 
    }
+
+    private fun gotoDetails(){
+        onView(withId(R.id.userNameTextView))
+            .perform(typeText("test"), closeSoftKeyboard())
+        onView(withId(R.id.passwordTextView))
+            .perform(typeText("test"), closeSoftKeyboard())
+
+        onView(withId(R.id.loginButton))
+            .perform(click())
+        onView(withId(R.id.nextIcn))
+            .perform(click())
+        onView(withId(R.id.profileContainer))
+            .perform(click())
+    }
 
 }
