@@ -19,15 +19,26 @@ class LoginActivityTest {
      val mActivityTestRule = ActivityTestRule<LoginActivity>(LoginActivity::class.java)
 
     @Test
-    fun verifyFieldValidation() {
-        onView(withId(R.id.userNameTextView))
-            .check(matches(withText("")))
-        onView(withId(R.id.passwordTextView))
-            .check(matches(withText("")))
+    fun verifyLayoutLabelContent() {
+        onView(withId(R.id.userNameLabel))
+            .check(matches(withText(R.string.username)))
+
+        onView(withId(R.id.passwordLabel))
+            .check(matches(withText(R.string.password)))
+
+        onView(withId(R.id.loginButton))
+            .check(matches(withText(R.string.entra)))
+
     }
 
     @Test
     fun verifyErrorLabelsDisplayed(){
+        onView(withId(R.id.userNameTextView))
+            .perform(typeText(""), closeSoftKeyboard())
+
+        onView(withId(R.id.passwordTextView))
+            .perform(typeText(""), closeSoftKeyboard())
+
         onView(withId(R.id.loginButton))
             .perform(click())
 
