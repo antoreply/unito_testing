@@ -3,6 +3,7 @@ package it.reply.iriscube.unito
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.intent.Intents.intended
+import androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasExtraWithKey
 import androidx.test.espresso.intent.rule.IntentsTestRule
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -19,11 +20,15 @@ class LoginActivityTest {
 
     @Test
     fun successfulLoginShouldOpenMainScreen() {
-        onView(withId(R.id.userNameTextView)).perform(typeText("Marco"), closeSoftKeyboard())
+        val username = "ilMioUsername"
+
+        onView(withId(R.id.userNameTextView)).perform(typeText(username), closeSoftKeyboard())
         onView(withId(R.id.passwordTextView)).perform(typeText("123456789"), closeSoftKeyboard())
         onView(withId(R.id.loginButton)).perform(click())
+
         intended(allOf(
-            hasExtraWithKey(LoginActivity.USERNAME)
+            hasExtraWithKey(LoginActivity.USERNAME),
+            hasExtra(LoginActivity.USERNAME, username)
         ))
     }
 }
