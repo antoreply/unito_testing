@@ -1,11 +1,12 @@
 package it.reply.iriscube.unito.datasource.api
 
-import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 
 /**
  * Created by Reply.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class ListUsersApiResponse(
     @JsonProperty("page")
     val page: Long,
