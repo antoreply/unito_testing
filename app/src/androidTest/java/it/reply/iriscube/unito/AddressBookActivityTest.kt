@@ -60,71 +60,39 @@ class AddressBookActivityTest {
         mockWebServer.enqueue(
             MockResponse()
                 .setResponseCode(200)
-                .setBody(
-                    """
-                    {
-                        "page": 1,
-                        "per_page": 3,
-                        "total": 12,
-                        "total_pages": 4,
-                        "data": [
-                            {
-                                "id": 1,
-                                "email": "george.bluth@gmail.com",
-                                "first_name": "George",
-                                "last_name": "Bluth",
-                                "avatar": ""
-                            },
-                            {
-                                "id": 2,
-                                "email": "janet.weaver@yahoo.com",
-                                "first_name": "Janet",
-                                "last_name": "Weaver",
-                                "avatar": ""
-                            },
-                            {
-                                "id": 3,
-                                "email": "emma.wong@gmail.com",
-                                "first_name": "Emma",
-                                "last_name": "Wong",
-                                "avatar": ""
-                            }
-                        ]
-                    }
-                """.trimIndent()
-                )
+                .setBody(getResponsePayload())
         )
+
         // Starting the desired activity.
         addressBookActivityRule.launchActivity(
             AddressBookActivity.newIntent(
                 ApplicationProvider.getApplicationContext()
             )
         )
+
         // Checking that the information displayed by the summary are correct.
-        onView(withId(R.id.recyclerView)).check(
-            RecyclerViewItemCountAssertion(
-                3
-            )
+        onView(withId(R.id.recyclerView))
+            .check(RecyclerViewItemCountAssertion(3)
         )
     }
 
     @Test
     fun failingPeopleLoadingShouldNotDoAnything() {
+        // Preparing the error response for the use case.
         mockWebServer.enqueue(
             MockResponse().setResponseCode(500)
         )
+
         // Starting the desired activity.
         addressBookActivityRule.launchActivity(
             AddressBookActivity.newIntent(
                 ApplicationProvider.getApplicationContext()
             )
         )
+
         // Checking that the information displayed by the summary are as expected.
-        onView(withId(R.id.recyclerView)).check(
-            RecyclerViewItemCountAssertion(
-                0
-            )
-        )
+        onView(withId(R.id.recyclerView))
+            .check(RecyclerViewItemCountAssertion(0))
     }
 
     @Test
@@ -133,48 +101,16 @@ class AddressBookActivityTest {
         mockWebServer.enqueue(
             MockResponse()
                 .setResponseCode(200)
-                .setBody(
-                    """
-                    {
-                        "page": 1,
-                        "per_page": 3,
-                        "total": 12,
-                        "total_pages": 4,
-                        "data": [
-                            {
-                                "id": 1,
-                                "email": "george.bluth@gmail.com",
-                                "first_name": "George",
-                                "last_name": "Bluth",
-                                "avatar": ""
-                            },
-                            {
-                                "id": 2,
-                                "email": "janet.weaver@yahoo.com",
-                                "first_name": "Janet",
-                                "last_name": "Weaver",
-                                "avatar": ""
-                            },
-                            {
-                                "id": 3,
-                                "email": "emma.wong@gmail.com",
-                                "first_name": "Emma",
-                                "last_name": "Wong",
-                                "avatar": ""
-                            }
-                        ]
-                    }
-                """.trimIndent()
-                )
+                .setBody(getResponsePayload())
                 // .setBodyDelay(2, TimeUnit.SECONDS) --> test fails if you insert a delay on response
         )
+
         // Starting the address book activity.
         addressBookActivityRule.launchActivity(
             AddressBookActivity.newIntent(
                 ApplicationProvider.getApplicationContext()
             )
         )
-
 
         // Selecting a user from the list and verifying that the right intent is started.
         onView(withId(R.id.recyclerView))
@@ -194,5 +130,39 @@ class AddressBookActivityTest {
                 IntentMatchers.hasExtra(PERSON_ID_EXTRA, 2L)
             )
         )
+    }
+
+    private fun getResponsePayload(): String{
+        return """
+                    {
+                        "page": 1,
+                        "per_page": 3,
+                        "total": 12,
+                        "total_pages": 4,
+                        "data": [
+                            {
+                                "id": 1,
+                                "email": "george.bluth@gmail.com",
+                                "first_name": "George",
+                                "last_name": "Bluth",
+                                "avatar": ""
+                            },
+                            {
+                                "id": 2,
+                                "email": "janet.weaver@yahoo.com",
+                                "first_name": "Janet",
+                                "last_name": "Weaver",
+                                "avatar": ""
+                            },
+                            {
+                                "id": 3,
+                                "email": "emma.wong@gmail.com",
+                                "first_name": "Emma",
+                                "last_name": "Wong",
+                                "avatar": ""
+                            }
+                        ]
+                    }
+                """.trimIndent()
     }
 }
