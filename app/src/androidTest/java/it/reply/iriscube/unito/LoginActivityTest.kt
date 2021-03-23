@@ -7,29 +7,39 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasExtraWithKey
 import androidx.test.espresso.intent.rule.IntentsTestRule
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import it.reply.iriscube.unito.activity.LoginActivity
 import org.hamcrest.Matchers.allOf
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 
-
+@RunWith(AndroidJUnit4::class)
 class LoginActivityTest {
 
     @get:Rule
-    val mIntentrule = IntentsTestRule<LoginActivity>(LoginActivity::class.java)
+    val intentsTestRule = IntentsTestRule(LoginActivity::class.java)
 
     @Test
     fun successfulLoginShouldOpenMainScreen() {
         val username = "ilMioUsername"
 
-        onView(withId(R.id.userNameTextView)).perform(typeText(username), closeSoftKeyboard())
-        onView(withId(R.id.passwordTextView)).perform(typeText("123456789"), closeSoftKeyboard())
-        onView(withId(R.id.loginButton)).perform(click())
+        onView(withId(R.id.userNameTextView))
+            .perform(typeText(username), closeSoftKeyboard())
 
-        intended(allOf(
-            hasExtraWithKey(LoginActivity.USERNAME),
-            hasExtra(LoginActivity.USERNAME, username)
-        ))
+        onView(withId(R.id.passwordTextView))
+            .perform(typeText("123456789"), closeSoftKeyboard())
+
+        onView(withId(R.id.loginButton))
+            .perform(click())
+
+        intended(
+            allOf(
+                hasExtraWithKey(LoginActivity.USERNAME),
+                hasExtra(LoginActivity.USERNAME, username)
+            )
+        )
+
     }
 }
 
