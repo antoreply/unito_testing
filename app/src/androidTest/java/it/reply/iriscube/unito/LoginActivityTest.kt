@@ -15,9 +15,16 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class LoginActivityTest {
 
+    /**
+     * The testing framework launches the activity under test before each test method
+     * annotated with @Test and before any method annotated with @Before
+     */
     @get:Rule
      val activityRule = ActivityScenarioRule(LoginActivity::class.java)
 
+    /**
+     * Sample test to check the value inside the default label
+     */
     @Test
     fun verifyLayoutLabelContent() {
         onView(withId(R.id.userNameLabel))
@@ -30,6 +37,9 @@ class LoginActivityTest {
             .check(matches(withText(R.string.entra)))
     }
 
+    /**
+     * Entering the wrong credentials will show the error TextView wrongCredential
+     */
     @Test
     fun showErrorViewsOnWrongCredentials(){
         onView(withId(R.id.wrongCredential))
@@ -47,6 +57,9 @@ class LoginActivityTest {
             .check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)))
     }
 
+    /**
+     * Having not entered data in the TextViews (username and password), the relative error views will be shown
+     */
     @Test
     fun showErrorsViewOnEmptyCredentials(){
         onView(withId(R.id.userNameErrorView))

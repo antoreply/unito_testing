@@ -14,6 +14,9 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ProfileActivityTest {
 
+    /**
+     * Check if the values shown are what you expected
+     */
     @Test
     fun verifyNoEmptyFields(){
         ActivityScenario.launch(ProfileActivity::class.java)
@@ -29,6 +32,9 @@ class ProfileActivityTest {
 
     }
 
+    /**
+     * Check that the profileBornCityTxt is visible
+     */
     @Test
     fun verifyBirthPlaceDisplayed(){
         ActivityScenario.launch(ProfileActivity::class.java)
