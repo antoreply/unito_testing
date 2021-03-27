@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Testing-unito_testing.iml" filepath="$PROJECT_DIR$/Testing-unito_testing.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/unito_testing.iml" filepath="$PROJECT_DIR$/unito_testing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="unito_testing/app" />
+      <module fileurl="file://$PROJECT_DIR$/unito_testing.iml" filepath="$PROJECT_DIR$/unito_testing.iml" group="unito_testing" />
     </modules>
   </component>
 </project>

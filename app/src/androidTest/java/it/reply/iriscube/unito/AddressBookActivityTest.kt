@@ -1,41 +1,34 @@
 package it.reply.iriscube.unito
 
-import android.content.ComponentName
-import android.content.Context
+import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers
+import androidx.test.espresso.intent.rule.IntentsTestRule
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import androidx.test.rule.ActivityTestRule
 import it.reply.iriscube.unito.app.activity.AddressBookActivity
 import it.reply.iriscube.unito.app.activity.PersonDetailActivity
-import it.reply.iriscube.unito.app.activity.PersonDetailActivity.Companion.PERSON_ID_EXTRA
 import it.reply.iriscube.unito.app.adapter.PeopleAdapter
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.hamcrest.Matchers.allOf
-import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * Created by Reply.
- */
+
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class AddressBookActivityTest {
 
+    // activity under test is launched locally in each method (launchActivity == false)
     @get:Rule
-    val addressBookActivityRule: ActivityTestRule<AddressBookActivity> =
-        ActivityTestRule(AddressBookActivity::class.java, false, false)
+    val activityRule = IntentsTestRule(AddressBookActivity::class.java, false, false)
 
     @get:Rule
     val mockWebServerRule: MockWebServerTestRule =
@@ -44,16 +37,10 @@ class AddressBookActivityTest {
     private val mockWebServer: MockWebServer
         get() = mockWebServerRule.mockWebServer
 
-    @Before
-    fun setUp() {
-        Intents.init()
-    }
 
-    @After
-    fun tearDown() {
-        Intents.release()
-    }
-
+    /**
+     * Load data from webserver and check if all three items are shown in the recyclerview
+     */
     @Test
     fun successfulPeopleLoadingShouldPopulateRecyclerView() {
         // Preparing the response for the use case.
@@ -63,41 +50,44 @@ class AddressBookActivityTest {
                 .setBody(getResponsePayload())
         )
 
-        // Starting the desired activity.
-        addressBookActivityRule.launchActivity(
-            AddressBookActivity.newIntent(
-                ApplicationProvider.getApplicationContext()
-            )
+        // start activity local to avoid load data fail with mockWebServer
+        activityRule.launchActivity(
+            Intent(ApplicationProvider.getApplicationContext(), AddressBookActivity::class.java)
         )
 
         // Checking that the information displayed by the summary are correct.
         onView(withId(R.id.recyclerView))
             .check(RecyclerViewItemCountAssertion(3)
         )
+
     }
 
+    /**
+     * Receive a internal server error and check if no items are shown in the recyclerview
+     */
     @Test
     fun failingPeopleLoadingShouldNotDoAnything() {
-        // Preparing the error response for the use case.
+
         mockWebServer.enqueue(
             MockResponse().setResponseCode(500)
         )
 
-        // Starting the desired activity.
-        addressBookActivityRule.launchActivity(
-            AddressBookActivity.newIntent(
-                ApplicationProvider.getApplicationContext()
-            )
+        activityRule.launchActivity(
+            Intent(ApplicationProvider.getApplicationContext(), AddressBookActivity::class.java)
         )
 
         // Checking that the information displayed by the summary are as expected.
         onView(withId(R.id.recyclerView))
             .check(RecyclerViewItemCountAssertion(0))
+
     }
 
+    /**
+     * After a server response correctly, select one item and check if the intent start as expected
+     */
     @Test
     fun selectingPersonShouldStartDetailIntent() {
-        // Preparing the response for the use case.
+
         mockWebServer.enqueue(
             MockResponse()
                 .setResponseCode(200)
@@ -105,31 +95,24 @@ class AddressBookActivityTest {
                 // .setBodyDelay(2, TimeUnit.SECONDS) --> test fails if you insert a delay on response
         )
 
-        // Starting the address book activity.
-        addressBookActivityRule.launchActivity(
-            AddressBookActivity.newIntent(
-                ApplicationProvider.getApplicationContext()
-            )
+        activityRule.launchActivity(
+            Intent(ApplicationProvider.getApplicationContext(), AddressBookActivity::class.java)
         )
 
-        // Selecting a user from the list and verifying that the right intent is started.
+        // Selecting a user from the list
         onView(withId(R.id.recyclerView))
             .perform(
                 RecyclerViewActions.actionOnItemAtPosition<PeopleAdapter.ViewHolder>(1, click())
             )
 
+        // verifying that the right intent is started (based on the item selected)
         intended(
             allOf(
-                IntentMatchers.hasComponent(
-                    ComponentName.createRelative(
-                        ApplicationProvider.getApplicationContext() as Context,
-                        PersonDetailActivity::class.java.name
-                    )
-                ),
-                IntentMatchers.hasExtraWithKey(PERSON_ID_EXTRA),
-                IntentMatchers.hasExtra(PERSON_ID_EXTRA, 2L)
+                IntentMatchers.hasComponent(PersonDetailActivity::class.java.name),
+                IntentMatchers.hasExtra(PersonDetailActivity.PERSON_ID_EXTRA, 2L)
             )
         )
+
     }
 
     private fun getResponsePayload(): String{
@@ -165,4 +148,5 @@ class AddressBookActivityTest {
                     }
                 """.trimIndent()
     }
+
 }
