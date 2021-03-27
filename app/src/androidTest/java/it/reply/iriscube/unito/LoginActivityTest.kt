@@ -20,6 +20,10 @@ class LoginActivityTest {
     @get:Rule
     val intentsTestRule = IntentsTestRule(LoginActivity::class.java)
 
+
+    /**
+     * Check that the login is successful and that the WelcomeActivity intent starts correctly
+     */
     @Test
     fun successfulLoginShouldOpenMainScreen() {
         val username = "ilMioUsername"
