@@ -5,9 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import it.reply.iriscube.unito.datasource.api.Person
 
-/**
- * Created by Reply.
- */
+
 class PersonDetailActivity : AppCompatActivity() {
 
     companion object {

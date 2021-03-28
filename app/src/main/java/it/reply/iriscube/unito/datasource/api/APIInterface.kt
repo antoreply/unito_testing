@@ -9,9 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.mock.BehaviorDelegate
 
-/**
- * Created by Reply.
- */
+
 interface APIInterface {
 
     @GET("api/errorExample")

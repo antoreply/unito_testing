@@ -18,9 +18,7 @@ import it.reply.iriscube.unito.datasource.api.APIInterface
 import it.reply.iriscube.unito.datasource.api.Person
 import kotlinx.android.synthetic.main.activity_address_book.*
 
-/**
- * Created by Reply.
- */
+
 class AddressBookActivity : AppCompatActivity(), PeopleAdapter.OnPersonSelectedListener {
 
     companion object {

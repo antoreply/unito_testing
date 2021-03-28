@@ -92,7 +92,7 @@ class AddressBookActivityTest {
             MockResponse()
                 .setResponseCode(200)
                 .setBody(getResponsePayload())
-                // .setBodyDelay(2, TimeUnit.SECONDS) --> test fails if you insert a delay on response
+                // .setBodyDelay(2, TimeUnit.SECONDS) //--> test fails if you insert a delay on response
         )
 
         activityRule.launchActivity(

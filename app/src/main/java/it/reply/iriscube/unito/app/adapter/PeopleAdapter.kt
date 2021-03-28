@@ -10,9 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import it.reply.iriscube.unito.R
 
-/**
- * Created by Reply.
- */
+
 class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     var peopleList: List<PersonModel>? = null
