@@ -53,10 +53,8 @@ class AddressBookActivityTest {
         // start activity local to avoid load data fail with mockWebServer
         activityRule.launchActivity(null)
 
-        // Checking that the information displayed by the summary are correct.
-        onView(withId(R.id.recyclerView))
-            .check(RecyclerViewItemCountAssertion(3)
-        )
+
+        // TODO (1) check using custom assertion that the information displayed by the summary are correct (expected 3 items)
 
     }
 
@@ -66,15 +64,13 @@ class AddressBookActivityTest {
     @Test
     fun failingPeopleLoadingShouldNotDoAnything() {
 
-        mockWebServer.enqueue(
-            MockResponse().setResponseCode(500)
-        )
+        // TODO (2) simulate an Internal Server Error, code 500, on the mockWebServer
+
 
         activityRule.launchActivity(null)
 
-        // Checking that the information displayed by the summary are as expected.
-        onView(withId(R.id.recyclerView))
-            .check(RecyclerViewItemCountAssertion(0))
+
+        // TODO (3) check using custom assertion that the information displayed by the summary are correct (expected 0 items)
 
     }
 
@@ -84,28 +80,14 @@ class AddressBookActivityTest {
     @Test
     fun selectingPersonShouldStartDetailIntent() {
 
-        mockWebServer.enqueue(
-            MockResponse()
-                .setResponseCode(200)
-                .setBody(getResponsePayload())
-                // .setBodyDelay(2, TimeUnit.SECONDS) //--> test fails if you insert a delay on response
-        )
+        // TODO (4) simulate a correct response, code 200, on the mockWebServer
 
-        activityRule.launchActivity(null)
+        // TODO (5) start the activity as previous
 
-        // Selecting a user from the list
-        onView(withId(R.id.recyclerView))
-            .perform(
-                RecyclerViewActions.actionOnItemAtPosition<PeopleAdapter.ViewHolder>(1, click())
-            )
+        // TODO (6) select an item in the list of address book
 
-        // verifying that the right intent is started (based on the item selected)
-        intended(
-            allOf(
-                IntentMatchers.hasComponent(PersonDetailActivity::class.java.name),
-                IntentMatchers.hasExtra(PersonDetailActivity.PERSON_ID_EXTRA, 2L)
-            )
-        )
+        // TODO (7) verifying that the right intent is started (based on the item selected)
+
 
     }
 
