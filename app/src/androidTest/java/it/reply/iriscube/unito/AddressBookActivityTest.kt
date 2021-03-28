@@ -51,9 +51,7 @@ class AddressBookActivityTest {
         )
 
         // start activity local to avoid load data fail with mockWebServer
-        activityRule.launchActivity(
-            Intent(ApplicationProvider.getApplicationContext(), AddressBookActivity::class.java)
-        )
+        activityRule.launchActivity(null)
 
         // Checking that the information displayed by the summary are correct.
         onView(withId(R.id.recyclerView))
@@ -72,9 +70,7 @@ class AddressBookActivityTest {
             MockResponse().setResponseCode(500)
         )
 
-        activityRule.launchActivity(
-            Intent(ApplicationProvider.getApplicationContext(), AddressBookActivity::class.java)
-        )
+        activityRule.launchActivity(null)
 
         // Checking that the information displayed by the summary are as expected.
         onView(withId(R.id.recyclerView))
@@ -95,9 +91,7 @@ class AddressBookActivityTest {
                 // .setBodyDelay(2, TimeUnit.SECONDS) //--> test fails if you insert a delay on response
         )
 
-        activityRule.launchActivity(
-            Intent(ApplicationProvider.getApplicationContext(), AddressBookActivity::class.java)
-        )
+        activityRule.launchActivity(null)
 
         // Selecting a user from the list
         onView(withId(R.id.recyclerView))
