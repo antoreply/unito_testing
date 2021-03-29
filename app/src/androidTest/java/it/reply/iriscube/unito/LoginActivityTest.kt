@@ -37,6 +37,15 @@ class LoginActivityTest {
         onView(withId(R.id.loginButton))
             .perform(click())
 
+        /*
+           - Validate intent -
+           Espresso-Intents records all intents that attempt to launch activities from the application under test.
+           Using the intended() method you can assert that a given intent has been seen.
+
+           hasComponent(targetActivity) -> verify if exist an intent with targetActivity
+           hasExtra(key, value) -> verify if exist an intent with extra (key, value)
+           allOf -> to verify both matchers
+         */
         intended(
             allOf(
                 hasComponent(WelcomeActivity::class.java.name),
