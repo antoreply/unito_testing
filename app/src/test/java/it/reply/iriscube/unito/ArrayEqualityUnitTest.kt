@@ -1,5 +1,6 @@
 package it.reply.iriscube.unito
 
+import it.reply.iriscube.unito.Bar.Companion.getMenu
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -8,6 +9,10 @@ import org.junit.Test
 class ArrayEqualityUnitTest {
 
     private lateinit var expectedCoffee: Array<CoffeeType>
+    private val bar = Bar(
+        name = "Coffee Break",
+        location = "Torino"
+    )
 
     @Before
     fun initInputs() {
@@ -22,15 +27,13 @@ class ArrayEqualityUnitTest {
 
     @Test
     fun compareObjectsContents() {
-
-        val testOutput = CoffeeType.getMenu().toTypedArray()
+        val testOutput = getMenu().toTypedArray()
         assertArrayEquals(expectedCoffee, testOutput)
     }
 
     @Test
     fun compareObjectReferences() {
-
-        val testOutput = CoffeeType.getMenu().toTypedArray()
+        val testOutput = getMenu().toTypedArray()
         assertNotSame(expectedCoffee, testOutput)
     }
 

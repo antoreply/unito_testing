@@ -5,10 +5,21 @@ import org.junit.Test
 
 class AssertBooleanUnitTest {
 
+    private val coffeeOrder = CoffeeOrder(
+        items = mutableListOf(
+            CoffeeType(1, "Espresso", 1.0f),
+            CoffeeType(1, "Espresso", 1.0f),
+            CoffeeType(2, "Ginseseng", 1.5f),
+            CoffeeType(3,"Decaffeinato", 2f),
+            CoffeeType(3, "Decaffeinato", 2f),
+            CoffeeType(4, "Cappuccino", 1.5f)
+        )
+    )
+
     @Test
     fun evenPriceTest() {
-        val abut = AssertBooleanUnitTest()
-        assertFalse(abut.isPriceEvenNumber(3f))
+        val isEven = coffeeOrder.isTotalPriceEvenNumber()
+        assertFalse(isEven)
     }
 
     @Test
@@ -16,11 +27,5 @@ class AssertBooleanUnitTest {
         // TODO check if the price is even or odd number, using the opposite of the previous example
     }
 
-    private fun isPriceEvenNumber(number: Float): Boolean {
-        var result = false
-        if (number % 2f == 0f) {
-            result = true
-        }
-        return result
-    }
+
 }

@@ -20,4 +20,17 @@ class CoffeeOrder constructor(private val items: MutableList<CoffeeType>) {
             items.remove(it)
         }
     }
+
+    fun isTotalPriceEvenNumber(): Boolean {
+        var result = false
+        if (calculateTotalPrice() % 2f == 0f) {
+            result = true
+        }
+        return result
+    }
+
+    fun getMostExpensiveCoffee(): CoffeeType? {
+        //TODO implement logic
+        return CoffeeType(2, "Ginseseng", 1.5f)
+    }
 }
