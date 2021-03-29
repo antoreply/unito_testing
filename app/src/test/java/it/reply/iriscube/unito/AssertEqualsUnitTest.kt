@@ -22,7 +22,7 @@ class AssertEqualsUnitTest {
     }
 
     @Test
-    fun `there are exactly two Decaffeinato in the order`() {
+    fun `there are exactly two Decaffeinato in the coffee order`() {
         //TODO
     }
 

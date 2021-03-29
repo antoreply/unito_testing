@@ -1,68 +1,69 @@
 package it.reply.iriscube.unito
 
-
-
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
-
 class CoffeeOrderTest {
-    private var mOrder: CoffeeOrder? = null
+
+    private lateinit var mOrder: CoffeeOrder
 
     @Before
     fun setUp() {
+        mOrder = CoffeeOrder(
+            items = mutableListOf(
+                CoffeeType(1, "Espresso", 1.0f),
+                CoffeeType(1, "Espresso", 1.0f),
+                CoffeeType(2, "Ginseseng", 1.5f),
+                CoffeeType(3,"Decaffeinato", 2f),
+                CoffeeType(3, "Decaffeinato", 2f),
+                CoffeeType(4, "Cappuccino", 1.5f)
+            )
+        )
     }
 
     @Test
     fun orderIsNotNull() {
         assertNotNull(mOrder)
     }
-/*
+
     @Test
     fun orderDecrement() {
-        mOrder?.let { order ->
-            order.decrementCoffeeCount()
-            assertEquals(0, order.getCoffeeCount())
+        assertEquals(6, mOrder.count())
+        mOrder.removeCoffee(CoffeeType(1, "Espresso", 1.0f))
+        assertEquals(5, mOrder.count())
 
-            order.setCoffeeCount(9)
-            order.decrementCoffeeCount()
-            assertEquals(8, order.getCoffeeCount())
-        }
-    }*/
+        mOrder.removeCoffee(CoffeeType(6, "Frappuccino", 2.5f))
+        assertEquals(5, mOrder.count())
+    }
 
-/*    @Test
+    @Test
     fun orderIncrement() {
-        mOrder?.let { order ->
-            order.incrementCoffeeCount()
-            assertEquals(1, order.getCoffeeCount())
+        assertEquals(6, mOrder.count())
+        mOrder.addCoffee(CoffeeType(1, "Espresso", 1.0f))
+        assertEquals(7, mOrder.count())
 
-            order.setCoffeeCount(3)
-            order.incrementCoffeeCount()
-            assertEquals(4, order.getCoffeeCount())
-        }
+        mOrder.addCoffee(CoffeeType(6, "Frappuccino", 2.5f))
+        assertEquals(8, mOrder.count())
     }
 
     @Test
-    fun orderTotalPrice() {
-        mOrder?.let { order ->
-            assertEquals(0.0f, order.totalPrice)
+    fun `add items and check total`() {
+        mOrder.addCoffee(CoffeeType(1, "Espresso", 1.0f))
+        assertEquals(10f, mOrder.calculateTotalPrice())
 
-            val nCoffeeOrdered = 6
-            order.setCoffeeCount(nCoffeeOrdered)
-            assertEquals(PRICE_TEST * nCoffeeOrdered, order.totalPrice)
-        }
+        mOrder.addCoffee(CoffeeType(6, "Frappuccino", 2.5f))
+        assertEquals(12.5f, mOrder.calculateTotalPrice())
     }
 
     @Test
-    fun orderSetCoffeeCount() {
-        mOrder?.let { order ->
-            order.setCoffeeCount(-1)
-            assertEquals(0, order.getCoffeeCount())
+    fun `remove items and check total`() {
+        mOrder.removeCoffee(CoffeeType(3, "Decaffeinato", 2f))
+        assertEquals(7f, mOrder.calculateTotalPrice())
+    }
 
-            order.setCoffeeCount(8)
-            assertEquals(8, order.getCoffeeCount())
-        }
-
-    }*/
+    @Test
+    fun `check coffee with longest name is 'Decaffeinato'`() {
+        assertEquals("Decaffeinato", mOrder.getCoffeeWithLongestName()?.name)
+    }
 }
