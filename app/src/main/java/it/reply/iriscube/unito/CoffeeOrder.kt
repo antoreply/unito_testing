@@ -23,7 +23,7 @@ class CoffeeOrder constructor(private val items: MutableList<CoffeeType>) {
 
     fun isTotalPriceEvenNumber(): Boolean {
         var result = false
-        if (calculateTotalPrice() % 2f == 0f) {
+        if (calculateTotalPrice().toInt() % 2 == 0) {
             result = true
         }
         return result
