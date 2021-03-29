@@ -1,32 +1,23 @@
 package it.reply.iriscube.unito
 
-data class CoffeeOrder(var price: Float = 1.0f, var count: Int = 0, var totalPrice: Float = 0f) {
+class CoffeeOrder constructor(private val items: MutableList<CoffeeType>) {
 
-    fun getCoffeeCount(): Int{
-        return count
+    fun addCoffee(coffee: CoffeeType) {
+        items.add(coffee)
     }
 
-    fun setCoffeeCount(count: Int){
-        if(count >= 0)
-            this.count = count
-
-        calculateTotalPrice()
+    fun calculateTotalPrice(): Float {
+        return items.map { it.price }.sum()
     }
 
-    fun incrementCoffeeCount(){
-        count++
-        calculateTotalPrice()
+    fun getQuantityOf(coffee: CoffeeType): Int {
+        return items.filter { it.id == coffee.id }.count()
     }
 
-    fun decrementCoffeeCount(){
-        if(count > 0) {
-            count--
-            calculateTotalPrice()
+    fun removeCoffee(coffee: CoffeeType) {
+        val itemToRemove = items.firstOrNull { it.id == coffee.id }
+        itemToRemove?.let {
+            items.remove(it)
         }
     }
-
-    fun calculateTotalPrice(){
-        totalPrice = price * count
-    }
-
 }

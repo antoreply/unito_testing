@@ -8,7 +8,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private val COFFEE_COUNT = "coffee_count"
     val espressoDoppio = CoffeeType(id = 6, name = "EspressoDoppio", price = 1.7f)
 
     private var mOrder: CoffeeOrder? = null
@@ -23,18 +22,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         coffeeIncrement.setOnClickListener(this)
         coffeeDecrement.setOnClickListener(this)
 
-        mOrder = CoffeeOrder(price = espressoDoppio.price)
+        mOrder = CoffeeOrder(
+            items = mutableListOf()
+        )
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.coffeeIncrement -> {
-                mOrder?.incrementCoffeeCount()
+                //mOrder?.incrementCoffeeCount()
                 updateCoffeeCount()
                 updateTotalPrice()
             }
             R.id.coffeeDecrement -> {
-                mOrder?.decrementCoffeeCount()
+                //mOrder?.decrementCoffeeCount()
                 updateCoffeeCount()
                 updateTotalPrice()
             }
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         mOrder?.let {order ->
-            outState.putInt(COFFEE_COUNT, order.getCoffeeCount())
+            //outState.putInt(COFFEE_COUNT, order.getCoffeeCount())
         }
     }
 
@@ -52,18 +53,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onRestoreInstanceState(savedInstanceState)
 
         savedInstanceState?.let {
-            mOrder!!.setCoffeeCount(savedInstanceState.getInt(COFFEE_COUNT))
+            //mOrder!!.setCoffeeCount(savedInstanceState.getInt(COFFEE_COUNT))
             updateCoffeeCount()
             updateTotalPrice()
         }
     }
 
     private fun updateCoffeeCount() {
-        coffeeCount.text = mOrder?.getCoffeeCount().toString()
+        //coffeeCount.text = mOrder?.getCoffeeCount().toString()
     }
 
     private fun updateTotalPrice() {
-        totalPrice.text = String.format(getString(R.string.total_price), mOrder?.totalPrice)
+        //totalPrice.text = String.format(getString(R.string.total_price), mOrder?.totalPrice)
     }
 
 
