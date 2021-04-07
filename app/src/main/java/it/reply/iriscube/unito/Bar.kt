@@ -13,6 +13,7 @@ class Bar constructor(private val name: String, location: String) {
             coffees.add(CoffeeType(3, "Ginseseng", 1.5f))
             coffees.add(CoffeeType(4, "Decaffeinato", 1.1f))
             coffees.add(CoffeeType(5, "Americano", 1.6f))
+            coffees.add(CoffeeType(6, "Irish Cofee", 2.0f))
             return coffees
         }
     }
