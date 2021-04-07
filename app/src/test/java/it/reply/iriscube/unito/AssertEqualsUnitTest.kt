@@ -16,7 +16,7 @@ class AssertEqualsUnitTest {
         )
     )
 
-    //TODO this test fails. Understand why and fix.
+    //TODO (4) this test fails. Understand why and fix.
     @Test
     fun expensiveCoffeeTest() {
         assertEquals("Cappuccino", coffeeOrder.getMostExpensiveCoffee()?.name)
@@ -24,7 +24,7 @@ class AssertEqualsUnitTest {
 
     @Test
     fun `there are exactly two Decaffeinato in the coffee order`() {
-        //TODO
+        //TODO(5)
     }
 
 }

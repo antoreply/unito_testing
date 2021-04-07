@@ -56,7 +56,7 @@ class WaiterTest {
 
     @Test
     fun sayHiAndLocation() {
-        //TODO
+        //TODO (8)
     }
 }
 

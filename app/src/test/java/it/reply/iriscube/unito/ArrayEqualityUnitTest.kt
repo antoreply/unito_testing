@@ -28,7 +28,7 @@ class ArrayEqualityUnitTest {
         assertArrayEquals(expectedCoffee, testOutput)
     }
 
-    //TODO this test fails. Understand why and fix.
+    //TODO (1) this test fails. Understand why and fix.
     @Test
     fun compareObjectReferences() {
         val testOutput = getMenu().toTypedArray()

@@ -36,7 +36,7 @@ class AssertBooleanUnitTest {
         assertTrue(isEven)
     }
 
-    //TODO this test fails. Understand why and fix.
+    //TODO (2) this test fails. Understand why and fix.
     @Test
     fun `price of modified list is odd (10,5)`() {
         coffeeOrder.addCoffee(CoffeeType(5, "Gingseng", 1.5f))
@@ -53,7 +53,7 @@ class AssertBooleanUnitTest {
 
     @Test
     fun `there are exactly two Espresso in the original list`() {
-        //TODO
+        //TODO (3)
     }
 
 
