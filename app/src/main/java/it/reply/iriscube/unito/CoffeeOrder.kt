@@ -1,31 +1,42 @@
 package it.reply.iriscube.unito
 
-class CoffeeOrder constructor(private val items: MutableList<CoffeeType>) {
+interface CoffeeOrderInterface {
+    fun addCoffee(coffee: CoffeeType)
+    fun removeCoffee(coffee: CoffeeType)
+    fun count(): Int
+    fun calculateTotalPrice(): Float
+    fun getQuantityOf(coffee: CoffeeType): Int
+    fun isTotalPriceEvenNumber(): Boolean
+    fun getMostExpensiveCoffee(): CoffeeType?
+    fun getCoffeeWithLongestName(): CoffeeType?
+}
 
-    fun addCoffee(coffee: CoffeeType) {
+class CoffeeOrder constructor(private val items: MutableList<CoffeeType>) : CoffeeOrderInterface {
+
+    override fun addCoffee(coffee: CoffeeType) {
         items.add(coffee)
     }
 
-    fun removeCoffee(coffee: CoffeeType) {
+    override fun removeCoffee(coffee: CoffeeType) {
         val itemToRemove = items.firstOrNull { it.id == coffee.id }
         itemToRemove?.let {
             items.remove(it)
         }
     }
 
-    fun count(): Int {
+    override fun count(): Int {
         return  items.size
     }
 
-    fun calculateTotalPrice(): Float {
+    override fun calculateTotalPrice(): Float {
         return items.map { it.price }.sum()
     }
 
-    fun getQuantityOf(coffee: CoffeeType): Int {
+    override fun getQuantityOf(coffee: CoffeeType): Int {
         return items.filter { it.id == coffee.id }.count()
     }
 
-    fun isTotalPriceEvenNumber(): Boolean {
+    override fun isTotalPriceEvenNumber(): Boolean {
         var result = false
         if (calculateTotalPrice().toInt() % 2 == 0) {
             result = true
@@ -33,12 +44,11 @@ class CoffeeOrder constructor(private val items: MutableList<CoffeeType>) {
         return result
     }
 
-    fun getMostExpensiveCoffee(): CoffeeType? {
-        //TODO implement logic
+    override fun getMostExpensiveCoffee(): CoffeeType? {
         return CoffeeType(2, "Gingseng", 1.5f)
     }
 
-    fun getCoffeeWithLongestName(): CoffeeType? {
+    override fun getCoffeeWithLongestName(): CoffeeType? {
         return items.maxBy { it.name.length }
     }
 }

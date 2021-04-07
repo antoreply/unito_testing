@@ -36,6 +36,7 @@ class AssertBooleanUnitTest {
         assertTrue(isEven)
     }
 
+    //TODO this test fails. Understand why and fix.
     @Test
     fun `price of modified list is odd (10,5)`() {
         coffeeOrder.addCoffee(CoffeeType(5, "Gingseng", 1.5f))
@@ -48,6 +49,11 @@ class AssertBooleanUnitTest {
         coffeeOrder.addCoffee(CoffeeType(6, "Frappuccino", 2.5f))
         val isEven = coffeeOrder.isTotalPriceEvenNumber()
         assertFalse(isEven)
+    }
+
+    @Test
+    fun `there are exactly two Espresso in the original list`() {
+        //TODO
     }
 
 
