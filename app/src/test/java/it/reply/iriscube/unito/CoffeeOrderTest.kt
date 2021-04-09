@@ -40,6 +40,9 @@ class CoffeeOrderTest {
     @Test
     fun orderIncrement() {
         //TODO (6)
+        assertEquals(6, mOrder.count())
+        mOrder.addCoffee(CoffeeType(1, "Espresso", 1.0f))
+        assertEquals(7, mOrder.count())
     }
 
     @Test
@@ -60,5 +63,6 @@ class CoffeeOrderTest {
     @Test
     fun `check coffee with longest name is 'Decaffeinato'`() {
         //TODO (7)
+        assertEquals(CoffeeType(3, "Decaffeinato", 2f), mOrder.getCoffeeWithLongestName())
     }
 }

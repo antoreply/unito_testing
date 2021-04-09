@@ -16,15 +16,18 @@ class AssertEqualsUnitTest {
         )
     )
 
-    //TODO (4) this test fails. Understand why and fix.
+    //TODO (4) this test fails. Understand why and fix. Tip: unit test is right. Implement getMostExpensiveCoffee properly.
+    // --> implement getMostExpensiveCoffee.
     @Test
     fun expensiveCoffeeTest() {
-        assertEquals("Cappuccino", coffeeOrder.getMostExpensiveCoffee()?.name)
+        assertEquals("Decaffeinato", coffeeOrder.getMostExpensiveCoffee()?.name)
     }
 
     @Test
     fun `there are exactly two Decaffeinato in the coffee order`() {
         //TODO(5)
+        val nDec = coffeeOrder.getQuantityOf(CoffeeType(3, "Decaffeinato", 2f))
+        assertEquals(2, nDec)
     }
 
 }

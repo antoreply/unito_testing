@@ -38,14 +38,14 @@ class CoffeeOrder constructor(private val items: MutableList<CoffeeType>) : Coff
 
     override fun isTotalPriceEvenNumber(): Boolean {
         var result = false
-        if (calculateTotalPrice().toInt() % 2 == 0) {
+        if (calculateTotalPrice() % 2 == 0f) {
             result = true
         }
         return result
     }
 
     override fun getMostExpensiveCoffee(): CoffeeType? {
-        return CoffeeType(2, "Gingseng", 1.5f)
+        return items.maxBy { it.price }
     }
 
     override fun getCoffeeWithLongestName(): CoffeeType? {

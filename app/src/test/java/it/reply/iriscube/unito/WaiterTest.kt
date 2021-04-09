@@ -3,7 +3,6 @@ package it.reply.iriscube.unito
 import org.junit.Test
 
 import org.junit.Assert.*
-import org.junit.Before
 import org.mockito.Mockito
 
 /**
@@ -57,6 +56,14 @@ class WaiterTest {
     @Test
     fun sayHiAndLocation() {
         //TODO (8)
+        Mockito.`when`(bar.getName()).thenReturn("My Bar")
+        Mockito.`when`(bar.getLocation()).thenReturn("Turin")
+
+        val result = waiter.sayHiAndLocation()
+        assertEquals(
+            "Hi, my name is Mark and i work at My Bar, which is in Turin",
+            result
+        )
     }
 }
 

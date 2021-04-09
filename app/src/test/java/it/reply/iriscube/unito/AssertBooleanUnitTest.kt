@@ -1,7 +1,6 @@
 package it.reply.iriscube.unito
 
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
@@ -36,7 +35,8 @@ class AssertBooleanUnitTest {
         assertTrue(isEven)
     }
 
-    //TODO (2) this test fails. Understand why and fix.
+    //TODO (2) this test fails. Understand why and fix. Tip: decimal numbers are not even. Check isTotalPriceEvenNumber.
+    // --> in isTotalPriceEvenNumber don't cast calculateTotalPrice() to int.
     @Test
     fun `price of modified list is odd (10,5)`() {
         coffeeOrder.addCoffee(CoffeeType(5, "Gingseng", 1.5f))
@@ -54,6 +54,9 @@ class AssertBooleanUnitTest {
     @Test
     fun `there are exactly two Espresso in the original list`() {
         //TODO (3)
+        val nEspresso = coffeeOrder.getQuantityOf(CoffeeType(1, "Espresso", 1.0f))
+        val flag: Boolean = 2 == nEspresso
+        assertTrue(flag)
     }
 
 

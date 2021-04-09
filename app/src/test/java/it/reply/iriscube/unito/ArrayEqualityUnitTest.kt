@@ -29,10 +29,11 @@ class ArrayEqualityUnitTest {
     }
 
     //TODO (1) this test fails. Understand why and fix.
+    // --> object references are different.
     @Test
     fun compareObjectReferences() {
         val testOutput = getMenu().toTypedArray()
-        assertSame(expectedCoffee, testOutput)
+        assertNotSame(expectedCoffee, testOutput)
     }
 
 }
