@@ -36,7 +36,7 @@ class AssertBooleanUnitTest {
         assertTrue(isEven)
     }
 
-    //TODO (2) this test fails. Understand why and fix.
+    //TODO (2) this test fails. Understand why and fix. Tip: decimal numbers are not even. Check isTotalPriceEvenNumber.
     @Test
     fun `price of modified list is odd (10,5)`() {
         coffeeOrder.addCoffee(CoffeeType(5, "Gingseng", 1.5f))

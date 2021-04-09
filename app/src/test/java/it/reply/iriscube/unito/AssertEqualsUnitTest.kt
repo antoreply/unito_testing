@@ -16,10 +16,10 @@ class AssertEqualsUnitTest {
         )
     )
 
-    //TODO (4) this test fails. Understand why and fix.
+    //TODO (4) this test fails. Understand why and fix. Tip: unit test is right. Implement getMostExpensiveCoffee properly.
     @Test
     fun expensiveCoffeeTest() {
-        assertEquals("Cappuccino", coffeeOrder.getMostExpensiveCoffee()?.name)
+        assertEquals("Decaffeinato", coffeeOrder.getMostExpensiveCoffee()?.name)
     }
 
     @Test
