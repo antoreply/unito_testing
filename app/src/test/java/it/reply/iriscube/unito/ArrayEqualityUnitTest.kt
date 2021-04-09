@@ -1,5 +1,6 @@
 package it.reply.iriscube.unito
 
+import it.reply.iriscube.unito.Bar.Companion.getMenu
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -16,22 +17,22 @@ class ArrayEqualityUnitTest {
             CoffeeType(2, "Cappuccino", 1.4f),
             CoffeeType(3, "Ginseseng", 1.5f),
             CoffeeType(4, "Decaffeinato", 1.1f),
-            CoffeeType(5, "Americano", 1.6f)
+            CoffeeType(5, "Americano", 1.6f),
+            CoffeeType(6, "Irish Coffee", 2.0f)
         )
     }
 
     @Test
     fun compareObjectsContents() {
-
-        val testOutput = CoffeeType.getMenu().toTypedArray()
+        val testOutput = getMenu().toTypedArray()
         assertArrayEquals(expectedCoffee, testOutput)
     }
 
+    //TODO (1) this test fails. Understand why and fix.
     @Test
     fun compareObjectReferences() {
-
-        val testOutput = CoffeeType.getMenu().toTypedArray()
-        assertNotSame(expectedCoffee, testOutput)
+        val testOutput = getMenu().toTypedArray()
+        assertSame(expectedCoffee, testOutput)
     }
 
 }

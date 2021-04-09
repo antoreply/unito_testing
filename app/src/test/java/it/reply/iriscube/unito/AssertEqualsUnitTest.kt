@@ -5,13 +5,26 @@ import org.junit.Test
 
 class AssertEqualsUnitTest {
 
+    private val coffeeOrder = CoffeeOrder(
+        items = mutableListOf(
+            CoffeeType(1, "Espresso", 1.0f),
+            CoffeeType(1, "Espresso", 1.0f),
+            CoffeeType(2, "Ginseseng", 1.5f),
+            CoffeeType(3,"Decaffeinato", 2f),
+            CoffeeType(3, "Decaffeinato", 2f),
+            CoffeeType(4, "Cappuccino", 1.5f)
+        )
+    )
+
+    //TODO (4) this test fails. Understand why and fix.
     @Test
-    fun myStringEqualsTest() {
-        val coffee = CoffeeType.getMenu()[4]
-        val expectedName = coffee.getExpensiveCoffeeType()
-
-        // assertEquals(expectedName, coffee.getExpensiveCoffeeType())
-
-        // TODO check if the expensive coffeeType is as expected
+    fun expensiveCoffeeTest() {
+        assertEquals("Cappuccino", coffeeOrder.getMostExpensiveCoffee()?.name)
     }
+
+    @Test
+    fun `there are exactly two Decaffeinato in the coffee order`() {
+        //TODO(5)
+    }
+
 }
