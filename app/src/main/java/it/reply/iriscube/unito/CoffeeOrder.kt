@@ -45,7 +45,7 @@ class CoffeeOrder constructor(private val items: MutableList<CoffeeType>) : Coff
     }
 
     override fun getMostExpensiveCoffee(): CoffeeType? {
-        return CoffeeType(2, "Gingseng", 1.5f)
+        return CoffeeType(2, "Ginseng", 1.5f)
     }
 
     override fun getCoffeeWithLongestName(): CoffeeType? {

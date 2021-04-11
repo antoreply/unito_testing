@@ -15,7 +15,7 @@ class ArrayEqualityUnitTest {
         expectedCoffee = arrayOf(
             CoffeeType(1, "Espresso", 1f),
             CoffeeType(2, "Cappuccino", 1.4f),
-            CoffeeType(3, "Ginseseng", 1.5f),
+            CoffeeType(3, "Ginseng", 1.5f),
             CoffeeType(4, "Decaffeinato", 1.1f),
             CoffeeType(5, "Americano", 1.6f),
             CoffeeType(6, "Irish Coffee", 2.0f)
