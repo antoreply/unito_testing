@@ -49,6 +49,6 @@ class CoffeeOrder constructor(private val items: MutableList<CoffeeType>) : Coff
     }
 
     override fun getCoffeeWithLongestName(): CoffeeType? {
-        return items.maxBy { it.name.length }
+        return items.maxByOrNull { it.name.length }
     }
 }
