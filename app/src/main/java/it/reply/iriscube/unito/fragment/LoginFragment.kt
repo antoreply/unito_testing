@@ -118,7 +118,6 @@ class LoginFragment : Fragment(), View.OnFocusChangeListener {
          * @return A new instance of fragment LoginFragment.
          */
         @JvmStatic
-        fun newInstance() =
-            LoginFragment()
+        fun newInstance() = LoginFragment()
     }
 }

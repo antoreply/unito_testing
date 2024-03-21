@@ -8,7 +8,6 @@ import androidx.test.espresso.intent.rule.IntentsTestRule
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import it.reply.iriscube.unito.activity.LoginActivity
-import it.reply.iriscube.unito.activity.WelcomeActivity
 import org.hamcrest.Matchers.allOf
 import org.junit.Rule
 import org.junit.Test
@@ -20,10 +19,6 @@ class LoginActivityTest {
     @get:Rule
     val intentsTestRule = IntentsTestRule(LoginActivity::class.java)
 
-
-    /**
-     * Check that the login is successful and that the WelcomeActivity intent starts correctly
-     */
     @Test
     fun successfulLoginShouldOpenMainScreen() {
         val username = "ilMioUsername"

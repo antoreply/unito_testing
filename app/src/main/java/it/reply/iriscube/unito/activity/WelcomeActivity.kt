@@ -13,7 +13,7 @@ class WelcomeActivity : AppCompatActivity(), WelcomeFragment.OnWelcomeFragmentLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         val username = intent.getStringExtra(USERNAME)
-        val welcomeFragment: WelcomeFragment = WelcomeFragment.newInstance(username)
+        val welcomeFragment: WelcomeFragment = WelcomeFragment.newInstance(username.orEmpty())
         supportFragmentManager.beginTransaction().add(R.id.container, welcomeFragment, WelcomeFragment.TAG).commit()
     }
 
