@@ -53,6 +53,8 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
