@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class MainViewModel: ViewModel() {
 
     // Funzione da svuotare e testare
-    fun execute(operation: OperationModel){
+    fun execute(operation: Operation){
 
     }
 
