@@ -32,8 +32,28 @@ class OperationModel(): Operation{
         return operator
     }
 
-    fun getOperands(): List<String?>{
-        return listOf(firstOperand,secondOperand)
+    fun getOperands(): Array<String?>{
+        return arrayOf(firstOperand,secondOperand)
+    }
+
+    fun isFirstOperandEven(): Boolean {
+        return if (firstOperand?.toIntOrNull() == null) false
+        else firstOperand!!.toInt() % 2 == 0
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return if (other is OperationModel){
+            when{
+                other.firstOperand != this.firstOperand -> false
+                other.secondOperand != this.secondOperand -> false
+                other.operator != this.operator -> false
+                else -> true
+            }
+        } else false
+    }
+
+    override fun hashCode(): Int {
+        return super.hashCode()
     }
 
 }
