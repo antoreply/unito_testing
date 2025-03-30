@@ -63,7 +63,7 @@ class OperationModelTest {
         assertTrue(operation.isFirstOperandEven())
     }
 
-    // TODO This test fails. Undertand why and fix it by changing the assert function.
+    // TODO This test fails. Understand why and fix it by changing the assert function.
     @Test
     fun `operations equality`(){
         val firstOperation = OperationModel("1","1",Operator.PLUS)
