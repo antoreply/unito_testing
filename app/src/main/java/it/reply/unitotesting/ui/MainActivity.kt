@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -29,13 +28,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import it.reply.unitotesting.businesslogic.MainViewModel
 import it.reply.unitotesting.ui.theme.UniToTestingTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import it.reply.unitotesting.businesslogic.OperationModel
 import it.reply.unitotesting.businesslogic.Operator
+import it.reply.unitotesting.businesslogic.ResultModel
 
 
 class MainActivity : ComponentActivity() {
@@ -60,8 +59,12 @@ fun MainScreen(viewModel: MainViewModel, paddingValues: PaddingValues) {
     var secondOperand = remember { mutableStateOf("") }
     var operator: MutableState<Operator?> = remember { mutableStateOf(null) }
 
+    var result: MutableState<ResultModel> = remember { mutableStateOf(ResultModel(null,Color.Black)) }
+
     Column(
-        modifier = Modifier.fillMaxSize().padding(paddingValues),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -120,15 +123,17 @@ fun MainScreen(viewModel: MainViewModel, paddingValues: PaddingValues) {
         // Button Conferma
 
         Box {
-            Button(onClick = {viewModel.execute(
-                OperationModel(firstOperand.value,secondOperand.value, operator.value)
-            )}) {
+            Button(onClick = {
+                result.value = viewModel.execute(
+                    OperationModel(firstOperand.value, secondOperand.value, operator.value)
+                )
+            }) {
                 Text("Conferma")
             }
         }
         Spacer(Modifier.height(16.dp))
 
         // Risultato
-        Text(viewModel.result.value.result ?: "", color = viewModel.result.value.color)
+        Text(result.value.result ?: "", color = result.value.color)
     }
 }
